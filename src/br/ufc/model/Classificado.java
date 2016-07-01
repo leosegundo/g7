@@ -1,5 +1,8 @@
 package br.ufc.model;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,6 +36,8 @@ public class Classificado {
 	@Column(name="data_oferta")
 	private String data;
 	
+	@Column(name="data_final")
+	private String datafinal;
 	
 	@ManyToOne(optional=false, cascade=CascadeType.REMOVE)
 	@JoinColumn(name="id_autor",
@@ -40,6 +45,14 @@ public class Classificado {
 	private Usuario autor;
 
 	
+	public String getDatafinal() {
+		return datafinal;
+	}
+
+	public void setDatafinal(String datafinal) {
+		this.datafinal = datafinal;
+	}
+
 	public Double getPreco() {
 		return preco;
 	}

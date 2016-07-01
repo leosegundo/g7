@@ -7,22 +7,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Inserir Noticia</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 	
-	<form action="inserirNoticia" method="post" enctype="multipart/form-data">
-		 <input type="hidden" value="${usuario_logado.id}${redator_logado.id}${jornalista_logado.id}" name="usuario" />
+<div id="menu">
+	<ul>
+		<li><a href="javascript:history.back()"> <<- Voltar</a></li>
+	</ul>
+</div>
+
+	<form action="inserirNoticia" method="post" enctype="multipart/form-data" style="width:95%;height:100px;padding:4%;font-size:1.2em;background-color:silver;">
+		 <input type="hidden" value="${jornalista_logado.id}" name="usuario" />
 		Titulo: <input type="text" name="titulo" />
 		<br />
 		Seção: <select name="secaoValores" onblur="">
-		<c:forEach var="s" items="${secoes}">
-			<option value="${s.secaoId}">${s.titulo}</option>
-		
-		</c:forEach>
-		</select><br /> 
-		Texto: <input type="text" name="texto" /> <br />
-		imagem: <input type="file" name="imagem" /><br />		
-		video: <input type="file" name="video" /><br />
+					<c:forEach var="s" items="${secoes}">
+						<option value="${s.secaoId}">${s.titulo}</option>
+			
+					</c:forEach>
+				</select><br /> 
+		Texto: <textarea name="texto"></textarea> <br />
+		Imagem: <input type="file" name="imagem" /><br />		
 		<input type="submit" value="ENVIAR" />
 		
 	</form>

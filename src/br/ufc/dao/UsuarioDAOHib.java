@@ -15,29 +15,29 @@ import br.ufc.model.Papel;
 import br.ufc.model.Usuario;
 
 @Repository
-public class UsuarioDAOHib implements IUsuarioDAO{
+public class UsuarioDAOHib{
 	@PersistenceContext
 	private EntityManager manager;
 
-	@Override
+	
 	public void inserir(Usuario usuario) {
 		// TODO Auto-generated method stub
 		manager.persist(usuario);
 	}
 
-	@Override
+	
 	public void alterar(Usuario usuario) {
 		// TODO Auto-generated method stub
 		manager.merge(usuario);
 	}
 
-	@Override
+	
 	public Usuario recuperar(Long id) {
 		// TODO Auto-generated method stub
 		return manager.find(Usuario.class, id);
 	}
 
-	@Override
+	
 	public Usuario recuperar(String login) {
 		// TODO Auto-generated method stub
 		String hql = "select u from usuario as u "
@@ -54,7 +54,7 @@ public class UsuarioDAOHib implements IUsuarioDAO{
 		return null;
 	}
 	
-	@Override
+	
 	public void apagar(Long id) {
 		// TODO Auto-generated method stub
 		Usuario aux = this.recuperar(id);
@@ -65,14 +65,14 @@ public class UsuarioDAOHib implements IUsuarioDAO{
 		
 	}
 
-	@Override
+	
 	public List<Usuario> listar() {
 		// TODO Auto-generated method stub
 		return manager.createQuery("Select u from usuario as u",
 				Usuario.class).getResultList();
 	}
 
-	@Override
+	
 	public Usuario recuperar(String usuario, boolean x) {
 		// TODO Auto-generated method stub
 		Long u = (long) Integer.parseInt(usuario);

@@ -19,10 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.ufc.dao.ComentarioDAO;
-import br.ufc.dao.INoticiaDAO;
-import br.ufc.dao.IUsuarioDAO;
 import br.ufc.dao.NoticiaDAOHib;
 import br.ufc.dao.SecaoDAO;
+import br.ufc.dao.UsuarioDAOHib;
 import br.ufc.model.Comentario;
 import br.ufc.model.Noticia;
 import br.ufc.model.Papel;
@@ -39,7 +38,7 @@ public class NoticiaController {
 	
 	@Autowired
 	@Qualifier(value="usuarioDAO")
-	private IUsuarioDAO uDAO;
+	private UsuarioDAOHib uDAO;
 	
 	@Autowired
 	@Qualifier(value="secaoDAO")
@@ -92,22 +91,6 @@ public class NoticiaController {
 		return "noticia/noticia_inserido_ok";
 	}
 	
-	/*@RequestMapping("/inserirNoticiahh")
-	public String inserirNoticiahh(@Valid Noticia noticia,HttpServletRequest req,
-							   BindingResult result){
-		
-		if(result.hasFieldErrors("nome")){
-			return "noticia/inserir_noticia_formulario";
-		}
-		
-		//Usuario x = uDAO.recuperar(req.getParameter("users"), false);
-		//noticia.setId(x);
-		this.nDAO.inserir(noticia);
-		
-		
-		return "noticia/noticia_inserido_ok";
-	}*/
-	
 	@RequestMapping("/listarNoticia")
 	public String listarNoticia(Model model){
 		List<Noticia> noticias = this.nDAO.listar();
@@ -120,6 +103,7 @@ public class NoticiaController {
 		Noticia noticia = nDAO.recuperar(id);
 		List<Comentario> comentarios = cDAO.recuperarComentario(noticia);
 		
+		model.addAttribute("secao", noticia.getSecao());
 		model.addAttribute("noticias", noticia);
 		model.addAttribute("comentarios", comentarios);
 		
@@ -131,6 +115,14 @@ public class NoticiaController {
 		System.out.println("entrouuu "+ id);
 		this.nDAO.apagar(id);
 		return "redirect:listarNoticia";
+	}
+	
+	@RequestMapping("/alterarNoticia")
+	public String alterarNoticia(Noticia noticia, Long secao, Long autor){
+		noticia.setAutor(uDAO.recuperar(autor));
+		noticia.setSecao(sDAO.recuperar(secao));
+		nDAO.alterar(noticia);
+		return "redirect:listaNoticiaPorNoticia?id="+ noticia.getNoticiaId();
 	}
 	
 	

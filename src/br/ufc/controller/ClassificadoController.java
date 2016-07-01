@@ -20,9 +20,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufc.dao.ClassificadoDAO;
-import br.ufc.dao.INoticiaDAO;
-import br.ufc.dao.IUsuarioDAO;
+import br.ufc.dao.NoticiaDAOHib;
 import br.ufc.dao.OfertaDAO;
+import br.ufc.dao.UsuarioDAOHib;
 import br.ufc.model.Classificado;
 import br.ufc.model.Comentario;
 import br.ufc.model.Noticia;
@@ -45,7 +45,7 @@ public class ClassificadoController {
 	
 	@Autowired
 	@Qualifier(value="usuarioDAO")
-	private IUsuarioDAO uDAO;
+	private UsuarioDAOHib uDAO;
 	
 	@RequestMapping("/inserirClassificadoFormulario")
 	public String inserirClassificadoFormulario(HttpSession session){
@@ -61,52 +61,25 @@ public class ClassificadoController {
 	@RequestMapping("/inserirClassifcado")
 	public String inserirClassifcado(@Valid Classificado classificado, HttpServletRequest req,
 							   BindingResult result){
-		//JOptionPane.showMessageDialog(null, "ENTROU!!!");
 		if(result.hasFieldErrors("nome")){
 			return "classificado/inserir_classificado_formulario";
 		}
 		
 		Usuario autor = uDAO.recuperar((long) Integer.parseInt(req.getParameter("idUsuario")));
-		//System.out.println(autor.getId()+autor.getNome());
 		classificado.setAutor(autor);
-		//classificado.setMelhorOferta(0.0);
 		
 		this.clDAO.inserir(classificado);
 		
 		return "classificado/classificado_inserido_ok";
 	}
 	
-	/*@RequestMapping("/inserirOfertaClassifcado")
-	public String inserirOfertaClassifcado(@Valid Oferta oferta, HttpServletRequest req,
-							   BindingResult result){
-		//JOptionPane.showMessageDialog(null, "ENTROU!!!");
-		//if(result.hasFieldErrors("nome")){
-			//return "classificado/inserir_classificado_formulario";
-		//}
-		
-		Usuario autor = uDAO.recuperar((long) Integer.parseInt(req.getParameter("idUsuario")));
-		//System.out.println(autor.getId()+autor.getNome());
-		oferta.setIdUsuario(autor);
-		//classificado.setMelhorOferta(0.0);
-		
-		this.clDAO.inserir(classificado);
-		
-		return "classificado/classificado_inserido_ok";
-	}
-	*/
 	@RequestMapping("/inserirOfertaClassifcado")
 	public String inserirOfertaClassifcado(@Valid Oferta oferta,HttpServletRequest req,
 							   BindingResult result){
 		
+		Classificado classificado = clDAO.recuperar((long) Integer.parseInt(req.getParameter("idClass")));
 		
-		Classificado classificado = clDAO.recuperar((long) Integer.parseInt(req.getParameter("idClassi")));
-		//comentario.setNoticia(noticia);
-		//classificado.setMelhorOferta(oferta);
-		//JOptionPane.showMessageDialog(null, "id noticia: "+comentario.getNoticia().getTitulo());
-		//System.out.println("MUAHAHAHAHAH " +req.getParameter("idUsuario"));
 		if(req.getParameter("idUser")!= ""){
-			//Noticia noticia = nDAO.recuperar((long) Integer.parseInt(req.getParameter("idNoticia")));
-			//comentario.setNoticia(noticia);
 			Usuario autor = uDAO.recuperar((long) Integer.parseInt(req.getParameter("idUser")));
 			
 			oferta.setIdUsuario(autor);
@@ -125,7 +98,8 @@ public class ClassificadoController {
 			clDAO.alterar(classificado);
 			
 		}
-		return "classificado/classificado_inserido_ok";
+		//return "classificado/classificado_inserido_ok";
+		return "redirect:listaClassificadoPorClassificado?id="+ classificado.getId();
 		
 		//return "comentario/inserir_comentario";
 	}
@@ -156,5 +130,24 @@ public class ClassificadoController {
 		return "pages/listar_classificado_por_classificado";
 	}
 	
-	
+	/*@RequestMapping("/inserirOferta")
+	public String inserirComentario(@Valid Oferta oferta,HttpServletRequest req,
+							   BindingResult result){
+		
+		
+		Classificado classificado= clDAO.recuperar((long) Integer.parseInt(req.getParameter("idClass")));
+		classificado.setMelhorOferta(oferta);
+		
+		System.out.println("MUAHAHAHAHAH " +req.getParameter("idUser"));
+		if(req.getParameter("idUser")!= ""){
+			Usuario autor = uDAO.recuperar((long) Integer.parseInt(req.getParameter("idUser")));
+		
+			//oferta.setAutor(autor);
+			oferta.setIdUsuario(autor);
+			this.oDAO.inserir(oferta);
+		}
+			return "redirect:listaClassificadoPorClassificado?id="+ classificado.getId();
+		
+	}
+	*/
 }

@@ -11,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.ufc.dao.IAlunoDAO;
-import br.ufc.dao.INoticiaDAO;
-import br.ufc.dao.IUsuarioDAO;
-import br.ufc.dao.PapelDAO;
+import br.ufc.dao.NoticiaDAOHib;
 import br.ufc.dao.UsuarioDAOHib;
+import br.ufc.dao.PapelDAO;
 import br.ufc.model.MD5Criptografia;
 import br.ufc.model.Noticia;
 import br.ufc.model.Papel;
@@ -24,9 +22,9 @@ import br.ufc.model.Usuario;
 @Controller
 public class LoginController {
 
-	@Autowired
-	@Qualifier(value="alunoDAO")
-	private IAlunoDAO aDAO;
+	//@Autowired
+	//@Qualifier(value="alunoDAO")
+	//private AlunoDAOHib aDAO;
 	
 	@Autowired
 	@Qualifier(value="usuarioDAO")
@@ -38,7 +36,7 @@ public class LoginController {
 	
 	@Autowired
 	@Qualifier(value="noticiaDAO")
-	private INoticiaDAO nDAO;
+	private NoticiaDAOHib nDAO;
 	
 	@RequestMapping("/loginFormulario")
 	public String loginFormulario(){

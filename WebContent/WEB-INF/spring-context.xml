@@ -32,7 +32,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	</bean>
 
 	<!--<bean id="alunoDAO" class="br.ufc.dao.AlunoDAOMem"/>-->
-	<bean id="alunoDAO" class="br.ufc.dao.AlunoDAOHib"/>
+	<!-- <bean id="alunoDAO" class="br.ufc.dao.AlunoDAOHib"/> -->
 	<bean id="usuarioDAO" class="br.ufc.dao.UsuarioDAOHib"/>
 	<bean id="papelDAO" class="br.ufc.dao.PapelDAO"/>
 	<bean id="noticiaDAO" class="br.ufc.dao.NoticiaDAOHib"/>

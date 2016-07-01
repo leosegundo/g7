@@ -6,42 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>${classificados.titulo}</title>
-<style type="text/css">
-	<!--
-		body {
-			padding:0px;
-			margin:0px;
-		}
- 
-		#menu ul {
-			padding:0px;
-			margin:0px;
-			float: left;
-			width: 100%;
-			background-color:#EDEDED;
-			list-style:none;
-			font:80% Tahoma;
-		}
- 
-		#menu ul li { display: inline; }
- 
-		#menu ul li a {
-			background-color:#EDEDED;
-			color: #333;
-			text-decoration: none;
-			border-bottom:3px solid #EDEDED;
-			padding: 2px 10px;
-			float:left;
-		}
- 
-		#menu ul li a:hover {
-			background-color:#D6D6D6;
-			color: #6D6D6D;
-			border-bottom:3px solid #EA0000;
-		}
-	-->
-	</style>
-
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 
@@ -67,12 +32,29 @@
 	<p>Preço: ${classificados.preco}</p><br />
 	<p>Autor: ${classificados.autor.nome}</p><br />
 	<p>Telefone: ${classificados.telefone}</p><br />
-	<p>Melhor oferta: ${classificados.melhorOferta}</p><br />
+	<p>Melhor oferta: ${classificados.melhorOferta.oferta}</p><br />
 	<p>Data: ${classificados.data}</p><br />
 	
 	
 	</p>
 
+
+
+<!-- Fazer Oferta -->
+	<h2>Fazer Oferta</h2>
+	<footer id="footer">
+		<hr>
+		<c:if test="${usuario_logado.id > 0}">		
+		<form action="inserirOfertaClassifcado" method="post">
+			<input type="hidden" name="idClass" value="${classificados.id}" />
+			<input type="hidden" name="idUser" value="${usuario_logado.id}" />
+			<div>
+				<textarea name="oferta" id="oferta" style="width:96%;height:90px;padding:2%;font-size:1.2em;background-color:silver;"></textarea>
+			</div>
+			<input type="submit" value="ofertar" style="width:20%;height:15px;padding:2%;font-size:1.2em;background-color:gray;">
+		</form>
+		</c:if>
+	</footer>
 
 </body>
 </html>

@@ -30,7 +30,7 @@ public class InterceptadorGeral extends HandlerInterceptorAdapter {
 			return true;
 		}
 		
-		response.sendRedirect("loginFormulario");
+		response.sendRedirect("goToHome");
 		return false;
 	}
 }

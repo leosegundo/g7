@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.ufc.dao.INoticiaDAO;
+import br.ufc.dao.NoticiaDAOHib;
 import br.ufc.dao.PapelDAO;
 import br.ufc.dao.SecaoDAO;
 import br.ufc.model.Noticia;
@@ -33,7 +33,7 @@ public class SecaoPapelController {
 	
 	@Autowired
 	@Qualifier(value="noticiaDAO")
-	private INoticiaDAO nDAO;
+	private NoticiaDAOHib nDAO;
 	
 	@Autowired
 	@Qualifier(value="papelDAO")

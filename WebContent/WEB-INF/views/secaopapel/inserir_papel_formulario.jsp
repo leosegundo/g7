@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Inserir Papel</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
 	<h2>Inserir Nova função do Usuário</h2><br />
 	<form action="inserirPapel" method="post">
 		Nome: <input type="text" name="papel" />
-		<form:errors path="aluno.nome" /> 
 		<br />
 		<input type="submit" value="ENVIAR" />
 		

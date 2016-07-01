@@ -14,8 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.ufc.dao.IUsuarioDAO;
 import br.ufc.dao.PapelDAO;
+import br.ufc.dao.UsuarioDAOHib;
 import br.ufc.model.Papel;
 import br.ufc.model.Usuario;
 
@@ -25,7 +25,7 @@ public class UsuarioController {
 	
 	@Autowired
 	@Qualifier(value="usuarioDAO")
-	private IUsuarioDAO aDAO;
+	private UsuarioDAOHib aDAO;
 	
 	@Autowired
 	@Qualifier(value="papelDAO")

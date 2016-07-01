@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Usuario Papel</title>
+<title>Classificado Inserido</title>
 </head>
 <body>
-			ok
+	
+	<script type="text/javascript"> 
+		alert("Classificado inserida com sucesso."); 
+		window.location.href = "javascript:history.back()"; 
 
-
+	</script>
 </body>
 </html>
