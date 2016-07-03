@@ -8,6 +8,11 @@
 <title>${noticias.titulo}</title>
 
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+
+
 
 </head>
 <body>
@@ -39,15 +44,17 @@
 	  
 	</p>
 	<!-- editar noticia -->
-	<p align="right">
-	<c:if test="${jornalista_logado.id != null}">		
-		<input type="hidden" name="idNoticia" value="${noticias.noticiaId}" />
-		<input type="hidden" name="idUsuario" value="${jornalista_logado.id}" />
-		<input type="hidden" name="idSecao" value="${secao.id}" />
-		
-		<a href="alterarNoticia?id=${noticias.noticiaId}">Alterar</a></td>
-		</c:if>
-	</p>
+	<c:if test="${jornalista_logado.id != null}">
+		<p align="right">
+			<form action="alterarNoticiaFormulario?id=${noticias.noticiaId}" method="POST">
+				<input type="hidden" name="idNoticia" value="${noticias.noticiaId}" />
+				<input type="hidden" name="autor" value="${noticias.autor.id}" />
+				<input type="hidden" name="idSecao" value="${secao.secaoId}" />
+				<!-- <a href="alterarNoticia?id=${noticias.noticiaId}">Alterar</a></td> -->
+				<input type="submit" value="Alterar">
+			</form>
+		</p>
+	</c:if>
 	
 	<!-- comentario -->
 	<footer id="footer">

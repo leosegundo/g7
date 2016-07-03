@@ -6,50 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Jornal</title>
-	 <style type="text/css">
-	<!--
-		body {
-			padding:0px;
-			margin:0px;
-		}
- 
-		#menu ul {
-			padding:0px;
-			margin:0px;
-			float: left;
-			width: 100%;
-			background-color:#EDEDED;
-			list-style:none;
-			font:80% Tahoma;
-		}
- 
-		#menu ul li { display: inline; }
-		#news p a { display: inline; }
-		
- 
-		#menu ul li a {
-			background-color:#EDEDED;
-			color: #333;
-			text-decoration: none;
-			border-bottom:3px solid #EDEDED;
-			padding: 2px 10px;
-			float:left;
-		}
- 
-		#menu ul li a:hover {
-			background-color:#D6D6D6;
-			color: #6D6D6D;
-			border-bottom:3px solid #EA0000;
-		}
-		
-		#news p a:hover {
-			background-color:#D6D6D6;
-			color: #6D6D6D;
-			border-bottom:3px solid #EA0000;
-		}
-	-->
-	</style>
-	
+
+<link rel="stylesheet" type="text/css" href="resources/css/menu.css">
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -75,7 +36,20 @@
 		</ul>
 </div>
 	
-
+	
+<div class="container">
+	  	<div class="row">
+	  		<c:forEach var="n" items="${noticias}">
+	    		<div class="col-md-4">
+      				<a href="listaNoticiaPorNoticia?id=${n.noticiaId}">
+				        <p>${n.titulo}</p>
+        				<img src="<c:url value="/resources/images/${n.noticiaId}.png"  />" alt="${n.titulo}" style="width:150px;height:150px">
+      				</a>
+    			</div>
+    		</c:forEach>
+		</div>
+</div>
+<!-- 
 	<c:forEach var="n" items="${noticias}">
 	<table border="2">
 		<a href="listaNoticiaPorNoticia?id=${n.noticiaId}"> 
@@ -87,7 +61,7 @@
 		
 		
 	</c:forEach>
-
+ -->
 	
 
 </body>

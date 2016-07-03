@@ -8,7 +8,9 @@
 <title>Classificados </title>
 
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -27,6 +29,21 @@
 		</ul>
 </div>
 
+
+<div class="container">
+	  	<div class="row">
+	  		<c:forEach var="n" items="${classificados}">
+	    		<div class="col-md-4">
+      				<a href="listaClassificadoPorClassificado?id=${n.id}">
+				        <p>${n.titulo}<br />
+				        ${n.preco}</p>
+    				</a>
+      				
+    			</div>
+    		</c:forEach>
+		</div>
+</div>
+<!-- 
 	<c:forEach var="n" items="${classificados}">
 	<table border="2">
 		<a href="listaClassificadoPorClassificado?id=${n.id}"> 
@@ -36,7 +53,7 @@
 		</c:forEach>
 		<br />
 
-
+ -->
 
 
 </body>

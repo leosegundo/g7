@@ -118,11 +118,22 @@ public class NoticiaController {
 	}
 	
 	@RequestMapping("/alterarNoticia")
-	public String alterarNoticia(Noticia noticia, Long secao, Long autor){
-		noticia.setAutor(uDAO.recuperar(autor));
-		noticia.setSecao(sDAO.recuperar(secao));
+	public String alterarNoticia(Noticia noticia, Long secaoValores, Long idAutor){
+		noticia.setAutor(uDAO.recuperar(idAutor));
+		noticia.setSecao(sDAO.recuperar(secaoValores));
+		System.out.println("hahahahaha "+ noticia.getNoticiaId());
 		nDAO.alterar(noticia);
-		return "redirect:listaNoticiaPorNoticia?id="+ noticia.getNoticiaId();
+		return "redirect:listaNoticiaPorNoticia?id="+noticia.getNoticiaId();
+	}
+	
+	@RequestMapping("/alterarNoticiaFormulario")
+	public String alterarNoticiaFormulario(Long id, Model model){
+		Noticia noticia = nDAO.recuperar(id);
+		List<Secao> secoes = sDAO.listar();
+		model.addAttribute("secoes",secoes);
+		model.addAttribute("noticia",noticia);
+		
+		return "noticia/alterar_noticia_formulario";
 	}
 	
 	
