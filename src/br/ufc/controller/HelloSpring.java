@@ -13,9 +13,5 @@ public class HelloSpring {
 		return "hello_ok";
 	}
 	
-	@RequestMapping("/irJornal")
-	public String irJornal(){
-		
-		return "pages/index";
-	}
+	
 }

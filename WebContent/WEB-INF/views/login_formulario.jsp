@@ -11,7 +11,7 @@
 	<h2>Efetuar Login - Administração</h2>
 	<form action="login" method="post" style="width:95%;height:100px;padding:4%;font-size:1.2em;background-color:silver;">
 		Login: <input type="text" name="login" /> <br />
-		Senha: <input type="text" name="senha" /> <br />
+		Senha: <input type="password" name="senha" /> <br />
 		<input type="submit" value="Entrar" /> 
 	</form>
 </body>

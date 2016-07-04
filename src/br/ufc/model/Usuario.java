@@ -15,8 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-//import br.ufc.sistema.Product;
-
 
 @Entity(name="usuario")
 public class Usuario {
@@ -34,14 +32,6 @@ public class Usuario {
 	
 	private String email;
 	
-	/*@ManyToMany
-	//id desse usuario
-	@JoinTable(name="PAPEL_USUARIO",
-			joinColumns=@JoinColumn(name="USUARIO_ID",
-									referencedColumnName="id"),
-			inverseJoinColumns=@JoinColumn(name="PAPEL_ID",
-										   referencedColumnName="id"))
-	private List<Papel> listaPapeis;*/
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="PAPEL_USUARIO",

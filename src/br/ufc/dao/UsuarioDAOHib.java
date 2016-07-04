@@ -80,20 +80,5 @@ public class UsuarioDAOHib{
 		return manager.find(Usuario.class, u);
 
 	}	
-	/*
-	public Papel recuperarPapel(Long id) {
-		// TODO Auto-generated method stub
-		String hql = "select p from papel_usuario as p "
-				+"where p.USUARIO_ID = :param_id";
-	
-		Query query = manager.createQuery(hql);
-		List<Papel> papeis = 
-				query.setParameter("param_id", id).getResultList();
-		
-		if(papeis.size()!=0){
-			return papeis.get(0);
-		}
 
-		return null;
-	}*/
 }

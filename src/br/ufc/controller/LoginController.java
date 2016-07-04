@@ -36,7 +36,11 @@ public class LoginController {
 	private NoticiaDAOHib nDAO;
 	
 	@RequestMapping("/loginFormulario")
-	public String loginFormulario(){
+	public String loginFormulario(HttpSession session){
+		if(session.getAttribute("redator_logado") !=  null ||
+				session.getAttribute("jornalista_logado") != null){
+			return "redirect:menu";
+		}
 		return "login_formulario";
 	}
 	
@@ -73,9 +77,6 @@ public class LoginController {
 					return "redirect:menu";
 					
 				}
-				//session.setAttribute("usuario_logado", candidato);
-				//session.setAttribute("Tipo", aux.getId());
-
 				List<Noticia> noticias = this.nDAO.listar();
 				model.addAttribute("noticias", noticias);
 				
@@ -102,6 +103,13 @@ public class LoginController {
 	public String logoutLeitor(HttpSession session){
 		session.invalidate();
 		return "redirect:goToHome";
+	}
+	
+	//ir para jornal
+	@RequestMapping("/irJornal")
+	public String irJornal(){
+		
+		return "pages/index";
 	}
 	
 	//Ir para Menu administração

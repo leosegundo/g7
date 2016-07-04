@@ -29,9 +29,7 @@ public class Oferta {
 	
 	private Double oferta;
 
-	
 
-	
 	public Long getId_oferta() {
 		return id_oferta;
 	}

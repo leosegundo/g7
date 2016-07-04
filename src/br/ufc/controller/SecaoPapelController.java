@@ -82,9 +82,7 @@ public class SecaoPapelController {
 	@RequestMapping("/listaNoticiaPorSecao")
 	public String listaNoticiaPorSecao(Long id, Model model){
 		Secao secao = sDAO.recuperar(id);
-		//List<Noticia> noticias = this.nDAO.listar();
-		//model.addAttribute("noticias", noticias);
-		//Secao secao = this.sDAO.recuperar(id);
+		
 		model.addAttribute("noticias", secao.getNoticia());
 		return "pages/lista_noticia_por_secao";
 	}

@@ -34,9 +34,6 @@ public class UsuarioController {
 	//leitors
 	@RequestMapping("/inserirLeitorFormulario")
 	public String inserirLeitorFormulario(Model model){
-		//List<Papel> papeis = this.pDAO.listar();
-		//model.addAttribute("papeis", papeis);
-		
 		return "usuario/inserir_leitor_formulario";
 	}
 	
@@ -54,17 +51,14 @@ public class UsuarioController {
 		p.add(this.pDAO.recuperar(1l));
 		//System.out.println("papel"+(p.get(0).getPapel()));
 		usuario.setListaPapeis(p);
-		this.aDAO.inserir(usuario);
-		//System.out.println(usuario.getLogin()+usuario.getId()+req.getParameter("papel"));
-		//this.aDAO.inserirPapel(p, usuario);
 		
-		//return "usuario/usuario_inserido_ok";
+		this.aDAO.inserir(usuario);
 		return "redirect:goToHome";
 	}
 	
 
 	
-	/* usuarios colpleto */
+	/* usuarios completo */
 	@RequestMapping("/inserirUsuarioFormulario")
 	public String inserirUsuarioFormulario(Model model){
 		List<Papel> papeis = this.pDAO.listar();
@@ -87,27 +81,22 @@ public class UsuarioController {
 		p.add(this.pDAO.recuperar((long) Integer.parseInt(req.getParameter("papel"))));
 		//System.out.println("papel"+(p.get(0).getPapel()));
 		usuario.setListaPapeis(p);
-		this.aDAO.inserir(usuario);
-		//System.out.println(usuario.getLogin()+usuario.getId()+req.getParameter("papel"));
-		//this.aDAO.inserirPapel(p, usuario);
 		
+		this.aDAO.inserir(usuario);
 		return "usuario/usuario_inserido_ok";
 	}
 	
 	@RequestMapping("/listarUsuario")
 	public String listarUsuario(Model model){
 		
-		
 		List<Usuario> usuarios = this.aDAO.listar();
 		model.addAttribute("usuarios", usuarios);
-		
 		
 		return "usuario/listar_usuario";
 	}	
 	
 	@RequestMapping("/apagarUsuario")
 	public String apagarUsuario(Long id){
-		
 		this.aDAO.apagar(id);
 		return "redirect:listarUsuario";
 	}

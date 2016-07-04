@@ -98,10 +98,9 @@ public class ClassificadoController {
 			clDAO.alterar(classificado);
 			
 		}
-		//return "classificado/classificado_inserido_ok";
+		
 		return "redirect:listaClassificadoPorClassificado?id="+ classificado.getId();
 		
-		//return "comentario/inserir_comentario";
 	}
 	
 	@RequestMapping("/inserirOfertaFormulario")
@@ -120,34 +119,11 @@ public class ClassificadoController {
 	
 	@RequestMapping("/listaClassificadoPorClassificado")
 	public String listaClassificadoPorClassificado(Long id, Model model){
-		//Noticia noticia = nDAO.recuperar(id);
 		Classificado classificados = clDAO.recuperar(id);
-		//List<Comentario> comentarios = cDAO.recuperarComentario(noticia);
 		
 		model.addAttribute("classificados", classificados);
-		//model.addAttribute("comentarios", comentarios);
-		
 		return "pages/listar_classificado_por_classificado";
 	}
 	
-	/*@RequestMapping("/inserirOferta")
-	public String inserirComentario(@Valid Oferta oferta,HttpServletRequest req,
-							   BindingResult result){
-		
-		
-		Classificado classificado= clDAO.recuperar((long) Integer.parseInt(req.getParameter("idClass")));
-		classificado.setMelhorOferta(oferta);
-		
-		System.out.println("MUAHAHAHAHAH " +req.getParameter("idUser"));
-		if(req.getParameter("idUser")!= ""){
-			Usuario autor = uDAO.recuperar((long) Integer.parseInt(req.getParameter("idUser")));
-		
-			//oferta.setAutor(autor);
-			oferta.setIdUsuario(autor);
-			this.oDAO.inserir(oferta);
-		}
-			return "redirect:listaClassificadoPorClassificado?id="+ classificado.getId();
-		
-	}
-	*/
+	
 }

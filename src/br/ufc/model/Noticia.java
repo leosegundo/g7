@@ -25,32 +25,19 @@ public class Noticia {
 	
 	private String texto;
 	
-	/*
-	@Column(name="SECAO_ID",
-			insertable=false,
-			updatable=false,
-			nullable=false)*/
-	//private Long secaoId;
 	
-	
-	//@OneToOne(cascade = CascadeType.ALL, optional=true)
-	//@JoinColumn(name="AUTOR_ID")
-	//private Usuario autor;
-	
+	/*relacionamento pro comentario*/
 	@OneToMany(mappedBy="noticia",
 			 targetEntity=Comentario.class,
 			 fetch=FetchType.EAGER)
 	private List<Comentario> comentario;
 	
+	/*relacionamento com seção*/
 	@ManyToOne(optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name = "id_secao", referencedColumnName="SECAO_ID" ,unique=false)
 	private Secao secao;
 	
-	/*
-	@OneToOne(optional=true, cascade=CascadeType.REMOVE)
-    @JoinColumn(name = "id", unique=false)
-	private Usuario id;*/
-	
+		
 	@ManyToOne(optional=true, cascade=CascadeType.ALL)
 	@JoinColumn(name="id_autor",
 				referencedColumnName="id", unique=false)
@@ -87,13 +74,7 @@ public class Noticia {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-	/*public Usuario getSecao() {
-		return id;
-	}
 
-	public void setId(Usuario id) {
-		this.id = id;
-	}*/
 	
 	public Usuario getAutor() {
 		return autor;

@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 
 @Entity(name="papel")
 public class Papel {
+	
 	@Id
 	@Column(name="papel_id",nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)

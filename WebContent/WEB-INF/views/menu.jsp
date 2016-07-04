@@ -26,7 +26,7 @@
 			</c:if>
 			
 		<li><a> | </a></li>
-		<li><a href="logout">Logout</a></li>
+		<li><a href="logoutLeitor">Logout</a></li>
 		</ul>
 		<ul>
 			<c:if test="${Tipo  == 2 }">
