@@ -24,6 +24,8 @@ public class Secao {
 	
 	private String descricao;
 	
+	private String cor;
+	
 	
 	@OneToMany(mappedBy="secao",
 			 targetEntity=Noticia.class,
@@ -62,4 +64,12 @@ public class Secao {
 		this.descricao = descricao;
 	}
 	
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
 }

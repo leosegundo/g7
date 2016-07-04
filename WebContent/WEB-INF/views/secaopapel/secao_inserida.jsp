@@ -12,7 +12,8 @@
 	<script type="text/javascript"> 
 
 		alert("Seção inserido com sucesso!!"); 
-		window.location.href = "inserirSecaoFormulario"; 
+		//window.location.href = "menu";
+		window.location.href = "javascript:history.back()";
 
 	</script>
 </body>

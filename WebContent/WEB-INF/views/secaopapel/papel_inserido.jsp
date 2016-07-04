@@ -10,7 +10,8 @@
 	<script type="text/javascript"> 
 
 		alert("Papel inserido com sucesso!!"); 
-		window.location.href = "inserirPapelFormulario"; 
+		//window.location.href = "inserirPapelFormulario";
+		window.location.href = "javascript:history.back()";
 
 	</script>
 </body>

@@ -52,8 +52,6 @@ public class SecaoPapelController {
 		}
 		
 		this.pDAO.inserir(papel);
-		
-		
 		return "secaopapel/papel_inserido";
 	}
 	

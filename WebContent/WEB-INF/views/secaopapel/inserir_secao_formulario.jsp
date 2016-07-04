@@ -25,6 +25,7 @@
 	<form action="inserirSecao" method="post" style="width:95%;height:100px;padding:4%;font-size:1.2em;background-color:silver;">
 		Titulo: <input type="text" name="titulo" /><br />
 		Descrição:<textarea name="descricao"></textarea> <br />
+		Cor: <input type="color" name="cor" /><br />
 		
 		<input type="submit" value="ENVIAR" />
 	</form>

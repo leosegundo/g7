@@ -12,7 +12,8 @@
 	<script type="text/javascript"> 
 
 		alert("Noticia inserida com sucesso."); 
-		window.location.href = "inserirNoticiaFormulario"; 
+		//window.location.href = "menu";
+		window.location.href = "javascript:history.back()";
 
 	</script>
 	

@@ -39,6 +39,10 @@
 				<li><a  href="inserirSecaoFormulario"> Cadastrar Seção</a> </li>
 				<li><a href="inserirClassificadoFormulario"> Cadastar Classificado</a></li>
 				<li><a href="listarClassificado"> Listar Classificado</a></li>
+				<!-- <li><a href="inserirPapelFormulario"> Inserir Papel dos usuarios</a></li> -->
+			</c:if>
+			<c:if test="${Tipo  != 1 && Tipo !=2 && Tipo != 3}">
+				<li><a  href="inserirUsuarioFormulario"> Inserir Jornalista ou redator </a> </li>
 				<li><a href="inserirPapelFormulario"> Inserir Papel dos usuarios</a></li>
 			</c:if>
 			<li><a href="goToHome">Jornal</a></li>
@@ -47,7 +51,7 @@
 </div>
 	
 		
-		<a  href="inserirUsuarioFormulario"> Inserir Jornalista ou redator </a> <br />
+		<!-- <a  href="inserirUsuarioFormulario"> Inserir Jornalista ou redator </a> <br /> -->
 	
 	
 

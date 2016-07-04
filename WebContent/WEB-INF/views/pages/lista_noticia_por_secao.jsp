@@ -4,12 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Noticias por seções</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Noticias por seções</title>
 
-<link rel="stylesheet" type="text/css" href="resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
 
 <div id="menu">
@@ -21,23 +25,28 @@
 		<ul>
 			<li><a href="goToHome">Home</a></li>
 			<li><a href="listarSecao">Seções</a></li>
-			<li><a href="#">classificados</a></li>
+			<li><a href="listarClassificado">classificados</a></li>
 			<li><a href="inserirLeitorFormulario">cadastre-se</a></li>
 			
 		</ul>
 	</div>
 
 <br />
-<!-- <table border="1"> -->
-	<c:forEach var="n" items="${noticias}">
-				<a href="listaNoticiaPorNoticia?id=${n.noticiaId}">
-				<h4>${n.titulo} </h4>
-				<img alt="${n.titulo}" src="<c:url value="/resources/images/${n.noticiaId}.png" />" />
-			</a>
-			<br />
-			______________
-	</c:forEach>
-	
+
+<div class="container">
+	  	<div class="row">
+	  		<c:forEach var="n" items="${noticias}">
+	    		<div class="col-md-4">
+      				<a href="listaNoticiaPorNoticia?id=${n.noticiaId}">
+				      <font color="${n.secao.cor}">  <p><h4>${n.titulo} </h4></p></font>
+				        <img alt="${n.titulo}" src="<c:url value="/resources/images/${n.noticiaId}.png" />" />
+    				</a>
+      				
+    			</div>
+    		</c:forEach>
+		</div>
+</div>
+
 
 
 </body>

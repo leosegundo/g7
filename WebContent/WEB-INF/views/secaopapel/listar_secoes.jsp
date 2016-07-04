@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Seções</title>
-<link rel="stylesheet" type="text/css" href="resources/css/style2.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="resources/css/style2.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
 <div id="menu">
@@ -37,19 +37,13 @@
 	  		<c:forEach var="s" items="${secoes}">
 	    		<div class="col-md-4">
       				<a href="listaNoticiaPorSecao?id=${s.secaoId}" >
-				        <p>${s.titulo}:${s.descricao}</p>
+				       	<font color="${s.cor}"><p>${s.titulo}:${s.descricao}</p></font>
         			</a>
     			</div>
     		</c:forEach>
 		</div>
 </div>
-<!-- 
-<div id="list">
-	<c:forEach var="s" items="${secoes}">
-		<p><a href="listaNoticiaPorSecao?id=${s.secaoId}" >${s.titulo}:${s.descricao}</a> </p> <br />
-	</c:forEach>
-</div>
- -->
+
 <br />
 
 

@@ -17,11 +17,11 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<context:component-scan base-package="br.ufc.dao" />
 	<context:component-scan base-package="br.ufc.controller" />
 	<mvc:annotation-driven />
- <!-- 
+
 	<mvc:interceptors>
 		<bean class="br.ufc.interceptor.InterceptadorGeral"/>
 	</mvc:interceptors>
-	 -->
+	   
 	 
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
@@ -44,7 +44,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 		
 	<bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/web" />
+		<property name="url" value="jdbc:mysql://localhost/g7" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean> 

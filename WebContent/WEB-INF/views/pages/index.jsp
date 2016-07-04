@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Jornal</title>
 
-<link rel="stylesheet" type="text/css" href="resources/css/menu.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="resources/css/menu.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -20,6 +21,7 @@
 		<li><a><b>Olá ${usuario_logado.nome}</b></a></li>
 		<li><a> | </a></li>
 		<li><a href="logoutLeitor">Logout</a></li>
+		<li><li><a href="loginFormulario"> Administração</a></li></li>
 		</ul>
 		<ul>
 			<li><a href="goToHome">Home</a></li>
@@ -40,11 +42,12 @@
 <div class="container">
 	  	<div class="row">
 	  		<c:forEach var="n" items="${noticias}">
-	    		<div class="col-md-4">
-      				<a href="listaNoticiaPorNoticia?id=${n.noticiaId}">
-				        <p>${n.titulo}</p>
+	  			<div class="col-md-4">
+	  				<a href="listaNoticiaPorNoticia?id=${n.noticiaId}">
+				       	<font color="${n.secao.cor}"><p>${n.titulo}</p></font>
         				<img src="<c:url value="/resources/images/${n.noticiaId}.png"  />" alt="${n.titulo}" style="width:150px;height:150px">
       				</a>
+      				
     			</div>
     		</c:forEach>
 		</div>

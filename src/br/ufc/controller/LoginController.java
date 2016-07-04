@@ -22,10 +22,7 @@ import br.ufc.model.Usuario;
 @Controller
 public class LoginController {
 
-	//@Autowired
-	//@Qualifier(value="alunoDAO")
-	//private AlunoDAOHib aDAO;
-	
+		
 	@Autowired
 	@Qualifier(value="usuarioDAO")
 	private UsuarioDAOHib uDAO;
@@ -48,38 +45,42 @@ public class LoginController {
 		/*prossegue */
 		Usuario candidato = uDAO.recuperar(usuario.getLogin());
 		MD5Criptografia md5 = new MD5Criptografia();
-		//System.out.println("candidato " + candidato.getSenha());
-		//System.out.println("usuer "+ usuario.getSenha());
+		
 		List<Papel> p = new ArrayList<Papel>();
         if(candidato!=null){
 			if(candidato.getSenha().equals(usuario.getSenha())){
-				//Papel aux = pDAO.recuperarPU(usuario.getId());
 				Usuario aux = uDAO.recuperar(usuario.getLogin());
-				//p.add(this.pDAO.recuperar((long) Integer.parseInt(req.getParameter("papel"))));
-				//System.out.println("aux id " +aux.getListaPapeis().get(0).getId());
 				if(aux.getListaPapeis().get(0).getId()== 1){
 					session.setAttribute("usuario_logado", candidato);
-					session.setAttribute("Tipo", aux.getId());
+					session.setAttribute("Tipo", 1);
 					return "redirect:goToHome";
 				}
 				else if(aux.getListaPapeis().get(0).getId() == 2){
 					session.setAttribute("jornalista_logado", candidato);
+					session.setAttribute("Tipo", 2);
 				}
 				else if(aux.getListaPapeis().get(0).getId() == 3){
 					session.setAttribute("redator_logado", candidato);
+					session.setAttribute("Tipo", 3);
 				}
-//				else{
-//					session.setAttribute("Tipo", 0);
-//					return "pages/index";
-//				}
+				else{
+					session.setAttribute("adm_logado", candidato);
+					session.setAttribute("Tipo", 0);
+					
+					List<Noticia> noticias = this.nDAO.listar();
+					model.addAttribute("noticias", noticias);
+					
+					return "redirect:menu";
+					
+				}
 				//session.setAttribute("usuario_logado", candidato);
-				session.setAttribute("Tipo", aux.getId());
+				//session.setAttribute("Tipo", aux.getId());
 
 				List<Noticia> noticias = this.nDAO.listar();
 				model.addAttribute("noticias", noticias);
 				
 				
-				return "menu";
+				return "redirect:menu";
 				
 			}
 		}
@@ -102,6 +103,13 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:goToHome";
 	}
+	
+	//Ir para Menu administração
+	@RequestMapping("/menu")
+	public String menu(){
+		return "menu";
+	}
+	
 }
 
 

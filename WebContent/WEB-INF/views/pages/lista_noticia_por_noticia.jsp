@@ -4,17 +4,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${noticias.titulo}</title>
+	<!-- charset=ISO-8859-1 -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>${noticias.titulo}</title>
 
-<link rel="stylesheet" type="text/css" href="resources/css/style.css">
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-
-
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
 
 <div id="menu">
@@ -32,20 +32,22 @@
 		</ul>
 </div>
 
-
+<p>
 	<p>
-	<p><h2 align="center">${noticias.titulo}</h2></p>
+		<font color="${noticias.secao.cor}"><h2 align="center">${noticias.titulo}</h2>
+	</p>
 		
 	<p align="center"> <img alt="${noticias.titulo}" src="<c:url value="/resources/images/${noticias.noticiaId}.png"  />" /> </p><br />
 		
 	<p>${noticias.texto}</p>
+	</font>
 	
 	
 	  
 	</p>
 	<!-- editar noticia -->
-	<c:if test="${jornalista_logado.id != null}">
-		<p align="right">
+	<p align="right">
+		<c:if test="${jornalista_logado.id != null}">
 			<form action="alterarNoticiaFormulario?id=${noticias.noticiaId}" method="POST">
 				<input type="hidden" name="idNoticia" value="${noticias.noticiaId}" />
 				<input type="hidden" name="autor" value="${noticias.autor.id}" />
@@ -53,8 +55,8 @@
 				<!-- <a href="alterarNoticia?id=${noticias.noticiaId}">Alterar</a></td> -->
 				<input type="submit" value="Alterar">
 			</form>
-		</p>
-	</c:if>
+		</c:if>
+	</p>
 	
 	<!-- comentario -->
 	<footer id="footer">

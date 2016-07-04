@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Efetuar Login</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 </head>
 <body>
-	<h2>Efetuar Login</h2>
-	<form action="login" method="post">
-		Login: <input type="text" name="login" value="a"/> <br />
-		Senha: <input type="text" name="senha" value="a"/> <br />
-		<input type="submit" value="ENVIAR" /> 
+	<h2>Efetuar Login - Administração</h2>
+	<form action="login" method="post" style="width:95%;height:100px;padding:4%;font-size:1.2em;background-color:silver;">
+		Login: <input type="text" name="login" /> <br />
+		Senha: <input type="text" name="senha" /> <br />
+		<input type="submit" value="Entrar" /> 
 	</form>
 </body>
 </html>

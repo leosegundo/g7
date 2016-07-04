@@ -56,8 +56,6 @@ public class NoticiaController {
 	public String inserirNoticiaFormulario(Model model){
 		List<Secao> secoes = this.sDAO.listar();
 		model.addAttribute("secoes", secoes);
-		//List<Usuario> usuarios = this.uDAO.listar();
-		//model.addAttribute("usuarios", usuarios);
 		return "noticia/inserir_noticia_formulario";
 	}
 	
@@ -65,21 +63,13 @@ public class NoticiaController {
 	public String inserirNoticia(@Valid Noticia noticia, HttpServletRequest req,
 							   BindingResult result, @RequestParam(value="imagem", required=false) MultipartFile imagem,
 							   @RequestParam(value="video", required=false) MultipartFile video){
-		//JOptionPane.showMessageDialog(null, "ENTROU!!!");
 		if(result.hasFieldErrors("nome")){
 			return "noticia/inserir_noticia_formulario";
 		}
 		
-		
-		
-		//System.out.println(noticia.getTexto());
-		//JOptionPane.showMessageDialog(null, "chegou "+ req.getParameter("secaoValores"));
 		Secao secao = sDAO.recuperar(req.getParameter("secaoValores"));
-		//System.out.println("id da secao: "+req.getParameter("secaoValores")+" Titulo "+secao.getTitulo());
 		noticia.setSecao(secao);
-		//noticia.setId(secao);
 		Usuario autor = uDAO.recuperar((long) Integer.parseInt(req.getParameter("usuario")));
-		//System.out.println(autor.getId()+autor.getNome());
 		noticia.setAutor(autor);
 		this.nDAO.inserir(noticia);
 		
